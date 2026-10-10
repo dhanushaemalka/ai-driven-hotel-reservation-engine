@@ -1,0 +1,606 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap');
+
+/* REMOVE: @import "tailwindcss"; */
+
+/* Tailwind Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --color-primary: #2563EB;
+  --color-secondary: #FBBF24;
+  --bg-base: #f8fafc;
+  --bg-surface: #ffffff;
+}
+
+/* Default font */
+* {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Playfair font class */
+.font-playfair {
+  font-family: 'Playfair', serif !important;
+}
+
+html, body, #root {
+  min-height: 100%;
+  background: var(--bg-base);
+}
+
+body {
+  color: #0f172a;
+  background-image:
+    radial-gradient(circle at 8% 10%, rgba(27, 48, 34, 0.16) 0%, rgba(27, 48, 34, 0) 36%),
+    radial-gradient(circle at 90% 6%, rgba(212, 175, 55, 0.18) 0%, rgba(212, 175, 55, 0) 36%),
+    radial-gradient(circle at 100% 100%, rgba(112, 128, 144, 0.14) 0%, rgba(112, 128, 144, 0) 48%);
+  background-attachment: fixed;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+.app-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(248, 250, 252, 0.85) 100%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(15, 23, 42, 0.015) 0px,
+      rgba(15, 23, 42, 0.015) 1px,
+      transparent 1px,
+      transparent 11px
+    );
+}
+
+.app-shell > * {
+  position: relative;
+  z-index: 2;
+}
+
+.public-bg,
+.admin-bg {
+  position: relative;
+  isolation: isolate;
+}
+
+.public-bg::before,
+.admin-bg::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(40px);
+}
+
+.public-bg::before {
+  width: min(520px, 65vw);
+  height: min(520px, 65vw);
+  top: 20px;
+  right: -120px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(27, 48, 34, 0.14) 0%, rgba(27, 48, 34, 0) 72%);
+}
+
+.admin-bg::before {
+  width: min(580px, 72vw);
+  height: min(580px, 72vw);
+  top: -80px;
+  left: -180px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, rgba(212, 175, 55, 0) 74%);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.luxury-page-bg {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(248, 250, 252, 0.92) 100%),
+    linear-gradient(120deg, rgba(27, 48, 34, 0.08) 0%, rgba(255, 255, 255, 0) 40%),
+    linear-gradient(290deg, rgba(212, 175, 55, 0.08) 0%, rgba(255, 255, 255, 0) 44%);
+}
+
+.luxury-page-bg::before,
+.luxury-page-bg::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(46px);
+  z-index: 0;
+}
+
+.luxury-page-bg::before {
+  width: min(480px, 65vw);
+  height: min(480px, 65vw);
+  top: 90px;
+  left: -140px;
+  background: radial-gradient(circle, rgba(27, 48, 34, 0.22) 0%, rgba(27, 48, 34, 0) 72%);
+}
+
+.luxury-page-bg::after {
+  width: min(520px, 70vw);
+  height: min(520px, 70vw);
+  right: -180px;
+  top: 20%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, rgba(212, 175, 55, 0) 74%);
+}
+
+/* ================================
+   Route-Level Public Themes
+================================ */
+.public-theme-default {
+  background:
+    radial-gradient(circle at 10% 15%, rgba(29, 78, 216, 0.08) 0%, transparent 32%),
+    radial-gradient(circle at 90% 10%, rgba(6, 182, 212, 0.07) 0%, transparent 34%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+}
+
+.public-theme-home {
+  background:
+    radial-gradient(circle at 8% 10%, rgba(22, 101, 52, 0.18) 0%, transparent 30%),
+    radial-gradient(circle at 88% 12%, rgba(101, 163, 13, 0.16) 0%, transparent 32%),
+    radial-gradient(circle at 50% 100%, rgba(21, 128, 61, 0.12) 0%, transparent 42%),
+    linear-gradient(180deg, #f0fdf4 0%, #dcfce7 42%, #f0fdf4 100%);
+}
+
+.public-theme-experience {
+  background:
+    radial-gradient(circle at 14% 14%, rgba(251, 146, 60, 0.22) 0%, transparent 36%),
+    radial-gradient(circle at 88% 18%, rgba(244, 114, 182, 0.18) 0%, transparent 36%),
+    radial-gradient(circle at 50% 110%, rgba(234, 88, 12, 0.16) 0%, transparent 45%),
+    linear-gradient(180deg, #fff7ed 0%, #ffedd5 46%, #ffe4e6 100%);
+}
+
+.public-theme-rooms {
+  background:
+    repeating-linear-gradient(
+      100deg,
+      rgba(120, 53, 15, 0.06) 0px,
+      rgba(120, 53, 15, 0.06) 8px,
+      rgba(146, 64, 14, 0.03) 8px,
+      rgba(146, 64, 14, 0.03) 18px
+    ),
+    radial-gradient(circle at 10% 12%, rgba(217, 119, 6, 0.15) 0%, transparent 34%),
+    radial-gradient(circle at 92% 16%, rgba(180, 83, 9, 0.13) 0%, transparent 38%),
+    linear-gradient(180deg, #fffbeb 0%, #fef3c7 50%, #fff7ed 100%);
+}
+
+.public-theme-room-details {
+  background:
+    radial-gradient(circle at 8% 8%, rgba(30, 64, 175, 0.16) 0%, transparent 32%),
+    radial-gradient(circle at 86% 14%, rgba(79, 70, 229, 0.14) 0%, transparent 34%),
+    linear-gradient(180deg, #eff6ff 0%, #e0e7ff 55%, #f8fafc 100%);
+}
+
+.public-theme-bookings {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(6, 95, 70, 0.15) 0%, transparent 34%),
+    radial-gradient(circle at 88% 16%, rgba(2, 132, 199, 0.14) 0%, transparent 38%),
+    linear-gradient(180deg, #ecfeff 0%, #cffafe 45%, #f0f9ff 100%);
+}
+
+.public-theme-reviews {
+  background:
+    radial-gradient(circle at 10% 8%, rgba(167, 139, 250, 0.16) 0%, transparent 34%),
+    radial-gradient(circle at 90% 12%, rgba(236, 72, 153, 0.14) 0%, transparent 34%),
+    linear-gradient(180deg, #fdf4ff 0%, #fae8ff 48%, #f5f3ff 100%);
+}
+
+.public-theme-about {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(14, 116, 144, 0.14) 0%, transparent 34%),
+    radial-gradient(circle at 86% 14%, rgba(100, 116, 139, 0.12) 0%, transparent 36%),
+    linear-gradient(180deg, #f0fdfa 0%, #e0f2fe 48%, #f8fafc 100%);
+}
+
+/* ================================
+   Route-Level Admin Themes
+================================ */
+.admin-theme-dashboard {
+  background:
+    radial-gradient(circle at 8% 12%, rgba(37, 99, 235, 0.07) 0%, transparent 36%),
+    radial-gradient(circle at 90% 10%, rgba(99, 102, 241, 0.06) 0%, transparent 36%),
+    linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 100%);
+}
+
+.admin-theme-users {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(2, 132, 199, 0.07) 0%, transparent 34%),
+    radial-gradient(circle at 86% 12%, rgba(14, 116, 144, 0.06) 0%, transparent 34%),
+    linear-gradient(180deg, #dbeafe 0%, #cbd5e1 100%);
+}
+
+.admin-theme-rooms {
+  background:
+    repeating-linear-gradient(
+      100deg,
+      rgba(146, 64, 14, 0.04) 0px,
+      rgba(146, 64, 14, 0.04) 7px,
+      rgba(194, 120, 3, 0.02) 7px,
+      rgba(194, 120, 3, 0.02) 16px
+    ),
+    linear-gradient(180deg, #e7e5e4 0%, #d6d3d1 100%);
+}
+
+.admin-theme-bookings {
+  background:
+    radial-gradient(circle at 10% 12%, rgba(5, 150, 105, 0.07) 0%, transparent 34%),
+    radial-gradient(circle at 90% 14%, rgba(34, 197, 94, 0.06) 0%, transparent 36%),
+    linear-gradient(180deg, #d1fae5 0%, #cbd5e1 100%);
+}
+
+.admin-theme-experiences {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(251, 146, 60, 0.08) 0%, transparent 34%),
+    radial-gradient(circle at 88% 14%, rgba(244, 114, 182, 0.06) 0%, transparent 36%),
+    linear-gradient(180deg, #e7e5e4 0%, #d6d3d1 100%);
+}
+
+.admin-theme-reviews {
+  background:
+    radial-gradient(circle at 10% 12%, rgba(88, 28, 135, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 88% 14%, rgba(71, 85, 105, 0.06) 0%, transparent 40%),
+    linear-gradient(180deg, #e2e8f0 0%, #cbd5e1 45%, #cbd5e1 100%);
+}
+
+.admin-theme-payments {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(217, 119, 6, 0.08) 0%, transparent 34%),
+    radial-gradient(circle at 88% 14%, rgba(245, 158, 11, 0.06) 0%, transparent 36%),
+    linear-gradient(180deg, #e7e5e4 0%, #d6d3d1 100%);
+}
+
+/* Admin: calmer content chrome + less intense motion overlay */
+.admin-bg .glass-panel {
+  background: rgba(15, 23, 42, 0.35);
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+.admin-bg .theme-motion-layer {
+  opacity: 0.38;
+}
+
+/* ================================
+   Animated Theme Layers
+================================ */
+@keyframes floatBubbles {
+  0% {
+    transform: translate3d(0, 18px, 0) scale(0.98);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(-10px, -16px, 0) scale(1.04);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate3d(6px, -34px, 0) scale(1.08);
+    opacity: 0.2;
+  }
+}
+
+@keyframes driftLeaves {
+  0% {
+    transform: translate3d(0, -10px, 0) rotate(0deg);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate3d(22px, 10px, 0) rotate(8deg);
+    opacity: 0.42;
+  }
+  100% {
+    transform: translate3d(-16px, 24px, 0) rotate(-10deg);
+    opacity: 0.16;
+  }
+}
+
+@keyframes sunsetGlow {
+  0%, 100% {
+    filter: blur(48px) saturate(1);
+    opacity: 0.34;
+  }
+  50% {
+    filter: blur(58px) saturate(1.2);
+    opacity: 0.56;
+  }
+}
+
+@keyframes woodShift {
+  0% { background-position: 0 0, 0 0, 0 0; }
+  100% { background-position: 180px 0, 0 0, 0 0; }
+}
+
+/* Base animated layer */
+.app-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+
+.admin-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+
+/* Home / forest: drifting leaf-like particles */
+.public-theme-home::after {
+  opacity: 1;
+  background:
+    radial-gradient(12px 9px at 12% 22%, rgba(34, 197, 94, 0.35) 0%, rgba(34, 197, 94, 0) 72%),
+    radial-gradient(10px 8px at 28% 72%, rgba(22, 163, 74, 0.32) 0%, rgba(22, 163, 74, 0) 70%),
+    radial-gradient(13px 10px at 56% 18%, rgba(101, 163, 13, 0.3) 0%, rgba(101, 163, 13, 0) 70%),
+    radial-gradient(11px 9px at 74% 66%, rgba(34, 197, 94, 0.28) 0%, rgba(34, 197, 94, 0) 70%),
+    radial-gradient(9px 7px at 88% 34%, rgba(132, 204, 22, 0.3) 0%, rgba(132, 204, 22, 0) 70%);
+  animation: driftLeaves 18s ease-in-out infinite alternate;
+}
+
+/* Experience / sunset: breathing glow + soft bubbles */
+.public-theme-experience::after {
+  opacity: 1;
+  background:
+    radial-gradient(circle at 22% 78%, rgba(251, 146, 60, 0.35) 0%, rgba(251, 146, 60, 0) 28%),
+    radial-gradient(circle at 76% 80%, rgba(244, 114, 182, 0.3) 0%, rgba(244, 114, 182, 0) 30%),
+    radial-gradient(circle at 54% 20%, rgba(253, 186, 116, 0.24) 0%, rgba(253, 186, 116, 0) 25%),
+    radial-gradient(14px 14px at 12% 86%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(10px 10px at 32% 90%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 74%),
+    radial-gradient(16px 16px at 64% 88%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+  animation: sunsetGlow 10s ease-in-out infinite, floatBubbles 16s ease-in-out infinite;
+}
+
+/* Rooms / wood: animated woodgrain drift */
+.public-theme-rooms::after,
+.admin-theme-rooms::after {
+  opacity: 1;
+  background:
+    repeating-linear-gradient(
+      95deg,
+      rgba(120, 53, 15, 0.08) 0px,
+      rgba(120, 53, 15, 0.08) 6px,
+      rgba(146, 64, 14, 0.02) 6px,
+      rgba(146, 64, 14, 0.02) 16px
+    ),
+    radial-gradient(circle at 15% 20%, rgba(217, 119, 6, 0.16) 0%, rgba(217, 119, 6, 0) 30%),
+    radial-gradient(circle at 85% 18%, rgba(180, 83, 9, 0.15) 0%, rgba(180, 83, 9, 0) 34%);
+  animation: woodShift 26s linear infinite;
+}
+
+/* Room details / bookings / users: airy bubbles */
+.public-theme-room-details::after,
+.public-theme-bookings::after,
+.admin-theme-users::after,
+.admin-theme-bookings::after {
+  opacity: 1;
+  background:
+    radial-gradient(16px 16px at 12% 84%, rgba(255, 255, 255, 0.33) 0%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(12px 12px at 28% 88%, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(18px 18px at 46% 82%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(11px 11px at 68% 90%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(14px 14px at 86% 86%, rgba(255, 255, 255, 0.23) 0%, rgba(255, 255, 255, 0) 72%);
+  animation: floatBubbles 15s ease-in-out infinite;
+}
+
+.admin-theme-users::after,
+.admin-theme-bookings::after {
+  opacity: 0.45;
+  background:
+    radial-gradient(16px 16px at 12% 84%, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(12px 12px at 28% 88%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(18px 18px at 46% 82%, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 70%),
+    radial-gradient(11px 11px at 68% 90%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(14px 14px at 86% 86%, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 72%);
+}
+
+/* Reviews / about / admin reviews: aurora vibe */
+.public-theme-reviews::after,
+.public-theme-about::after,
+.admin-theme-reviews::after {
+  opacity: 0.42;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 30%),
+    radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 32%),
+    radial-gradient(circle at 50% 88%, rgba(15, 23, 42, 0.04) 0%, rgba(15, 23, 42, 0) 28%);
+  animation: floatBubbles 18s ease-in-out infinite;
+}
+
+/* Admin dashboard / experiences / payments — softer highlights */
+.admin-theme-dashboard::after,
+.admin-theme-experiences::after,
+.admin-theme-payments::after {
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 30%),
+    radial-gradient(circle at 82% 16%, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0) 32%),
+    radial-gradient(circle at 52% 88%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 28%);
+  animation: floatBubbles 18s ease-in-out infinite;
+}
+
+/* ================================
+   Advanced Motion Layer
+================================ */
+.theme-motion-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  --tone-a: 59, 130, 246;
+  --tone-b: 20, 184, 166;
+  --tone-c: 234, 179, 8;
+  opacity: 1;
+}
+
+.theme-gradient-band {
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 9999px;
+  filter: blur(62px);
+  opacity: 0.62;
+  mix-blend-mode: normal;
+}
+
+.theme-gradient-band.band-1 {
+  top: -18vw;
+  left: -16vw;
+  background: radial-gradient(circle, rgba(var(--tone-a), 0.9) 0%, rgba(var(--tone-a), 0) 70%);
+  animation: driftLeaves 20s ease-in-out infinite alternate;
+}
+
+.theme-gradient-band.band-2 {
+  right: -18vw;
+  bottom: -22vw;
+  background: radial-gradient(circle, rgba(var(--tone-b), 0.85) 0%, rgba(var(--tone-b), 0) 70%);
+  animation: floatBubbles 24s ease-in-out infinite alternate;
+}
+
+.theme-motion-layer .fx {
+  position: absolute;
+  display: block;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: calc(var(--i) * -0.8s);
+  opacity: 0.82;
+  will-change: transform, opacity;
+}
+
+.theme-motion-layer .fx-orb {
+  width: calc(30px + (var(--i) % 6) * 10px);
+  height: calc(30px + (var(--i) % 6) * 10px);
+  border-radius: 9999px;
+  left: calc(3% + (var(--i) * 5.1%));
+  top: calc(8% + (var(--i) * 3.6%));
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.75) 0%, rgba(var(--tone-a), 0.52) 42%, rgba(var(--tone-a), 0) 80%);
+  filter: blur(0.5px);
+  box-shadow: 0 0 22px rgba(var(--tone-a), 0.45);
+  animation-name: floatBubbles;
+  animation-duration: calc(12s + (var(--i) % 5) * 3s);
+}
+
+.theme-motion-layer .fx-leaf {
+  width: calc(28px + (var(--i) % 4) * 6px);
+  height: calc(14px + (var(--i) % 4) * 4px);
+  left: calc(4% + (var(--i) * 7.8%));
+  top: calc(2% + (var(--i) * 6.2%));
+  border-radius: 70% 30% 68% 32% / 62% 32% 68% 38%;
+  background: linear-gradient(120deg, rgba(var(--tone-b), 0.88), rgba(var(--tone-c), 0.64));
+  box-shadow: 0 0 14px rgba(var(--tone-b), 0.35);
+  transform-origin: center center;
+  animation-name: driftLeaves;
+  animation-duration: calc(10s + (var(--i) % 6) * 2s);
+}
+
+.theme-motion-layer .fx-bubble {
+  width: calc(22px + (var(--i) % 5) * 7px);
+  height: calc(22px + (var(--i) % 5) * 7px);
+  left: calc(2% + (var(--i) * 6.4%));
+  top: calc(84% - (var(--i) * 3.8%));
+  border-radius: 9999px;
+  border: 2px solid rgba(255,255,255,0.8);
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.66), rgba(var(--tone-a), 0.24) 56%, rgba(var(--tone-a), 0) 80%);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+  animation-name: floatBubbles;
+  animation-duration: calc(11s + (var(--i) % 4) * 3s);
+}
+
+.theme-motion-layer .fx-spark {
+  width: calc(6px + (var(--i) % 4) * 3px);
+  height: calc(6px + (var(--i) % 4) * 3px);
+  left: calc(4% + (var(--i) * 5.3%));
+  top: calc(6% + (var(--i) * 4.9%));
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 16px rgba(255,255,255,0.95);
+  filter: blur(0.5px);
+  animation: sunsetGlow calc(6s + (var(--i) % 5) * 2s) ease-in-out infinite;
+}
+
+/* Theme color palettes */
+.theme-home {
+  --tone-a: 22, 163, 74;
+  --tone-b: 132, 204, 22;
+  --tone-c: 16, 185, 129;
+}
+
+.theme-experience {
+  --tone-a: 251, 146, 60;
+  --tone-b: 244, 114, 182;
+  --tone-c: 253, 186, 116;
+}
+
+.theme-rooms,
+.theme-admin-rooms {
+  --tone-a: 180, 83, 9;
+  --tone-b: 146, 64, 14;
+  --tone-c: 217, 119, 6;
+}
+
+.theme-room-details,
+.theme-bookings,
+.theme-admin-users,
+.theme-admin-bookings {
+  --tone-a: 37, 99, 235;
+  --tone-b: 14, 116, 144;
+  --tone-c: 6, 182, 212;
+}
+
+.theme-reviews,
+.theme-about,
+.theme-admin-reviews {
+  --tone-a: 168, 85, 247;
+  --tone-b: 236, 72, 153;
+  --tone-c: 129, 140, 248;
+}
+
+.theme-admin-dashboard,
+.theme-admin-experiences,
+.theme-admin-payments {
+  --tone-a: 99, 102, 241;
+  --tone-b: 14, 165, 233;
+  --tone-c: 245, 158, 11;
+}
+
+/* Adjust effect intensity by theme */
+.theme-home .fx-bubble,
+.theme-home .fx-spark {
+  opacity: 0.58;
+}
+
+.theme-experience .fx-leaf {
+  opacity: 0.5;
+}
+
+.theme-rooms .fx-bubble,
+.theme-admin-rooms .fx-bubble {
+  opacity: 0.44;
+}
+
+.theme-rooms .fx-leaf,
+.theme-admin-rooms .fx-leaf {
+  opacity: 0.66;
+}
