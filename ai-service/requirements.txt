@@ -1,0 +1,17 @@
+langchain
+langchain-community
+langchain-huggingface # For free local embeddings
+sentence-transformers # Required for HuggingFace embeddings
+unstructured==0.14.4 # Document loading
+chromadb # Vector storage
+networkx # For Knowledge Graph
+textblob # For sentiment analysis (optional, for backup sentiment)
+streamlit>=1.28.0 # Web UI framework
+streamlit-chat # Enhanced chat components
+
+# FastAPI for REST API integration with Hotel Booking System
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.0.0
+
+# install markdown depenendies with: `pip install "unstructured[md]"` after install the requirements file. Leave this line commented out. 
